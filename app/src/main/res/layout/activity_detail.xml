@@ -3,14 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#4CAF50">
 
     <EditText
         android:id="@+id/typeinCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/alfa_slab_one"
         app:layout_constraintStart_toEndOf="@+id/caloriestext"
         app:layout_constraintTop_toBottomOf="@+id/typeinFood" />
 
@@ -18,9 +20,11 @@
         android:id="@+id/caloriestext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/alfa_slab_one"
         android:text="Enter Calories:"
+        android:textFontWeight="@integer/material_motion_duration_long_1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodtext" />
 
@@ -31,7 +35,10 @@
         android:layout_marginStart="75dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="265dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:includeFontPadding="true"
         android:text="Enter Food:"
+        android:textFontWeight="@integer/material_motion_duration_medium_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="132dp"
         android:layout_marginTop="104dp"
+        android:fontFamily="@font/alfa_slab_one"
         app:layout_constraintStart_toEndOf="@+id/foodtext"
         app:layout_constraintTop_toTopOf="parent" />
 
