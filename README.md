@@ -1,18 +1,18 @@
-# Android Project 6 - *Name of App Here*
+# Android Project 6 - *BitFit App*
 
-Submitted by: **Your Name Here**
+Submitted by: **Michael Gallo**
 
-**Name of your app** is a health metrics app that allows users to track ... [TODO] 
+**Calorie tracker** is a health metrics app that allows users to track calories 
 
-Time spent: **X** hours spent in total
+Time spent: **7** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [ ] **Use at least 2 Fragments**
-- [ ] **Create a new dashboard fragment where users can see a summary of their entered data**
-- [ ] **Use one of the Navigation UI Views (BottomNavigation, Drawer Layout, Top Bar) to move between the fragments**
+- [x] **Use at least 2 Fragments**
+- [x] **Create a new dashboard fragment where users can see a summary of their entered data**
+- [x] **Use one of the Navigation UI Views (BottomNavigation, Drawer Layout, Top Bar) to move between the fragments**
 
 The following **optional** features are implemented:
 
@@ -21,7 +21,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] List anything else that you can get done to improve the app functionality!
+      added delete button
 
 ## Video Walkthrough
 
