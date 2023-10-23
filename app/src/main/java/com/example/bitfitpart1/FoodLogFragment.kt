@@ -10,6 +10,7 @@ import android.widget.Button
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -45,12 +46,14 @@ class FoodLogFragment : Fragment() {
         foodRecyclerView.adapter= foodAdapter
         val addfoodButton= view.findViewById<Button>(R.id.enter_food_button)
 
+
+        val deletebutton=view.findViewById<Button>(R.id.deletebutton)
         lifecycleScope.launch {
             (activity?.application as FoodApplication).db.foodDao().getAll().collect { databaseList ->
                 databaseList.map { entity ->
                     DisplayFood(
                         entity.foodName,
-                        entity.calories
+                        entity.calories.toString().toInt()
                     )
                 }.also { mappedList ->
                     food.clear()
@@ -64,6 +67,15 @@ class FoodLogFragment : Fragment() {
             val intent = Intent(requireActivity(), AddFoodActivity::class.java)
             startActivity(intent)
         }
+
+        deletebutton.setOnClickListener {
+            lifecycleScope.launch(Dispatchers.IO) {
+                (activity?.application as FoodApplication).db.foodDao().deleteAll()
+
+            }
+        }
+
+
 
     return view
     }

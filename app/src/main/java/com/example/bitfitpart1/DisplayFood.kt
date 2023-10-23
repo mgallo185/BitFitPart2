@@ -1,6 +1,6 @@
 package com.example.bitfitpart1
 
-data class DisplayFood (
+data class DisplayFood(
     val foodName: String?,
-    val calories: String?
+    val calories: Int?
 ): java.io.Serializable

@@ -22,7 +22,7 @@ class AddFoodActivity:  AppCompatActivity() {
             val enterCalories= findViewById<EditText>(R.id.typeinCalories)
             lifecycleScope.launch(Dispatchers.IO)  {
                 (application as FoodApplication).db.foodDao().insert(
-                    FoodEntity(enterFood.text.toString(), enterCalories.text.toString() )
+                    FoodEntity(enterFood.text.toString(), enterCalories.text.toString())
                 )
             }
 
