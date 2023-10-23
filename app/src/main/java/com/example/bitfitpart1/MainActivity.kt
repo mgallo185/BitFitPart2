@@ -4,46 +4,50 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var foodRecyclerView: RecyclerView
-    private val foodItemList = mutableListOf<DisplayFood>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val addfoodButton = findViewById<Button>(R.id.enter_food_button)
-        foodRecyclerView = findViewById<RecyclerView>(R.id.food_RecyclerView)
-      val foodAdapter= FoodAdapter(this,foodItemList)
+        val foodLogFragment: Fragment = FoodLogFragment()
+        val foodDashboardFragment: Fragment= FoodDashboardFragment()
+
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
 
-        foodRecyclerView.layoutManager= LinearLayoutManager(this)
-        foodRecyclerView.adapter =foodAdapter
-        lifecycleScope.launch {
-            (application as FoodApplication).db.foodDao().getAll().collect { databaseList ->
-                databaseList.map { entity ->
-                    DisplayFood(
-                        entity.foodName,
-                        entity.calories
-                    )
-                }.also { mappedList ->
-                    foodItemList.clear()
-                    foodItemList.addAll(mappedList)
-                    foodAdapter.notifyDataSetChanged()
-                }
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            lateinit var fragment: Fragment
+            when (item.itemId) {
+                R.id.foodlist-> fragment = foodLogFragment
+                R.id.dashboard-> fragment = foodDashboardFragment
             }
+            replaceFragment(fragment)
+            true
         }
+        // Set default selection
+        bottomNavigationView.selectedItemId = R.id.foodlist
+        replaceFragment(FoodLogFragment())
 
-        addfoodButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, AddFoodActivity::class.java)
-            startActivity(intent)
-        }
+
+
 
 
     }
+    private fun replaceFragment(articleListFragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.food_frame_layout, articleListFragment)
+        fragmentTransaction.commit()
+    }
+
+
 }
