@@ -43,6 +43,7 @@ class FoodLogFragment : Fragment() {
         foodRecyclerView.layoutManager = layoutManager
         foodRecyclerView.setHasFixedSize(true)
         foodRecyclerView.adapter= foodAdapter
+        val addfoodButton= view.findViewById<Button>(R.id.enter_food_button)
 
         lifecycleScope.launch {
             (activity?.application as FoodApplication).db.foodDao().getAll().collect { databaseList ->
@@ -58,9 +59,6 @@ class FoodLogFragment : Fragment() {
                 }
             }
         }
-
-        val addfoodButton = view.findViewById<Button>(R.id.enter_food_button)
-
 
         addfoodButton.setOnClickListener {
             val intent = Intent(requireActivity(), AddFoodActivity::class.java)
